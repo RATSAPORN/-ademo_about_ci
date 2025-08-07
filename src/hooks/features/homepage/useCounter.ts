@@ -1,17 +1,12 @@
 import { useState } from 'react';
 
-type UseCounterReturn = {
-  count: number;
-  val: number;
-  increment: () => void;
-  setVal: (newVal: number) => void;
-};
-
-export default function useCounter(): UseCounterReturn {
+export default function useCounter() {
   const [count, setCount] = useState(0);
   const [val, setVal] = useState(1);
 
-  const increment = () => setCount((c) => c + val);
+  function increment() {
+    setCount((count) => count + val);
+  }
 
-  return { count, val, increment, setVal };
+  return { count, increment, val, setVal };
 }
